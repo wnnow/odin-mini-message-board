@@ -4,17 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <h1>Mini Message Board</h1>
-    <ul>
-      <% messages.forEach(message => { %>
-      <li>
-        <div class="user-name"><%=message.user%></div>
-        <div class="user-message"><%=message.message%></div>
-        <div class="user-date"><%=message.added%></div>
-      </li>
-      <% }) %>
-    </ul>
+    <!-- <h1>Mini Message Board</h1> -->
+    <%- include('navbar') %>
+    <main class="main-content">
+      <ul>
+        <% messages.forEach(message => { %>
+        <li class="message-container">
+          <a href="/new/<%=message.id%>">
+            <div class="user-name"><%=message.user%></div>
+            <div class="user-date">
+              <%=format(message.added, 'yyyy-MM-dd HH:mm:ss')%>
+            </div>
+            <div class="user-message"><%=message.text%></div>
+          </a>
+        </li>
+        <% }) %>
+      </ul>
+    </main>
+    <%- include('footer') %>
   </body>
 </html>
