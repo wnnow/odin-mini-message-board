@@ -1,5 +1,5 @@
 const express = require("express");
-const dotenv = require("dotenv").config();
+require("dotenv").config();
 const { format } = require("date-fns");
 const path = require("node:path");
 const newRouter = require("./routes/new");
