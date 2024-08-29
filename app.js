@@ -3,7 +3,7 @@ require("dotenv").config();
 const { format } = require("date-fns");
 const path = require("node:path");
 const newRouter = require("./routes/new");
-// const messages = require("./db/data");
+
 const app = express();
 const assetPath = path.join(__dirname, "public");
 const usersController = require("./controllers/usersControllers");

@@ -30,7 +30,7 @@ async function findMessage(req, res) {
   try {
     const { id } = req.params;
     const message = await db.findMessage(id);
-    console.log(message);
+
     if (message) {
       res.render("message", {
         title: "Message Detail",
