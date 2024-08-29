@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { format } = require("date-fns");
+const usersController = require("../controllers/usersControllers");
 
 router.get("/", (req, res) => {
   res.render("form", { title: "Mini Message Board" });
@@ -20,16 +21,6 @@ router.get("/:id", (req, res) => {
   }
 });
 
-router.post("/", (req, res) => {
-  const user = req.body.messageUser;
-  const message = req.body.messageText;
-  messages.push({
-    user: user,
-    text: message,
-    added: new Date(),
-  });
-
-  res.redirect("/");
-});
+router.post("/", usersController.insertUser);
 
 module.exports = router;

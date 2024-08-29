@@ -16,6 +16,18 @@ async function getUsernames(req, res) {
   }
 }
 
+async function insertUser(req, res) {
+  try {
+    const { username, message } = req.body;
+
+    await db.insertUser(username, message);
+    res.redirect("/");
+  } catch (error) {
+    console.error("Insert Controller error: ", error);
+  }
+}
+
 module.exports = {
   getUsernames,
+  insertUser,
 };
