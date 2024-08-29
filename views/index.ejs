@@ -10,14 +10,14 @@
     <%- include('navbar') %>
     <main class="main-content">
       <ul>
-        <% messages.forEach(message => { %>
+        <% users.forEach(user => { %>
         <li class="message-container">
-          <a href="/new/<%=message.id%>">
-            <div class="user-name"><%=message.user%></div>
+          <a href="/new/<%=user.id%>">
+            <div class="user-name"><%=user.username%></div>
             <div class="user-date">
-              <%=format(message.added, 'yyyy-MM-dd HH:mm:ss')%>
+              <%=format(user.created_at, 'yyyy-MM-dd HH:mm:ss')%>
             </div>
-            <div class="user-message"><%=message.text%></div>
+            <div class="user-message"><%=user.message%></div>
           </a>
         </li>
         <% }) %>
