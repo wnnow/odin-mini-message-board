@@ -22,7 +22,24 @@ async function insertUser(username, message) {
   }
 }
 
+async function findMessage(userId) {
+  try {
+    const { rows } = await pool.query(
+      "SELECT * FROM messages WHERE id = ($1)",
+      [userId]
+    );
+    if (rows.length === 0) {
+      throw new Error("User not found");
+    }
+    return rows[0];
+  } catch (error) {
+    console.error("Error finding user:", error);
+    throw new Error("Could not find user");
+  }
+}
+
 module.exports = {
   getAllUsernames,
   insertUser,
+  findMessage,
 };
